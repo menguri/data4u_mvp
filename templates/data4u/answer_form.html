@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- 답변 수정-->
+<div class="container my-3">
+    <form method="post">
+        {% csrf_token %}
+        {% include "form_errors.html" %}
+        <div class="mb-3">
+            <label for="content" class="form-label">답변 내용</label>
+        	<div class="my-3">
+    			<p><label><input {% if not user.is_authenticated %}disabled{% endif %} type="checkbox" name="content" value= 1> 1번: {{ question.content1|default_if_none:'' }} </label></p>
+    			<p><label><input {% if not user.is_authenticated %}disabled{% endif %} type="checkbox" name="content" value= 2> 2번: {{ question.content2|default_if_none:'' }} </label></p>
+    			<p><label><input {% if not user.is_authenticated %}disabled{% endif %} type="checkbox" name="content" value= 3> 3번: {{ question.content3|default_if_none:'' }} </label></p>
+    			<p><label><input {% if not user.is_authenticated %}disabled{% endif %} type="checkbox" name="content" value= 4> 4번: {{ question.content4|default_if_none:'' }} </label></p>
+        	</div>
+        </div>
+        <button type="submit" class="btn" style="color: white; background-color: #0099FF;">저장하기</button>
+    </form>
+</div>
+{% endblock %}

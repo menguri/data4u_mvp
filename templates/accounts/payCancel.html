@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load data4u_filter %}
+{% block content %}
+<!-- message 표시 -->
+{% if messages %}
+<div class="alert alert-danger my-3" role="alert">
+{% for message in messages %}
+    <strong>{{ message.tags }}</strong>
+    <ul><li>{{ message.message }}</li></ul>
+{% endfor %}
+</div>
+{% endif %}
+<div class="card justify-content-center py-5">
+  <h2 class="text-center my-5 col-12">결제를 취소합니다!</h2>
+  <div>
+    <div class="mt-5 pt-3 text-center">
+      <a href="{% url 'accounts:profile' user.id %}" class="btn" style="font-weight:bold; background-color: #FFD200;">메인으로 돌아가기</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

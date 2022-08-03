@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h5 class="my-3 border-bottom pb-2">프로필 등록/수정</h5>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- 오류표시 Start -->
+        {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% for field in form %}
+            {% if field.errors %}
+            <div>
+                <strong>{{ field.label }}</strong>
+                {{ field.errors }}
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+        <!-- 오류표시 End -->
+        <div class="mb-3">
+            <label for="image" class="form-label">프로필 이미지</label>
+            <input class="form-control" type="file" id="image" name="image" accept="image/png, image/jpeg" value="{{ form.image.value|default_if_none:'' }}">
+        </div>
+        <div class="mb-3">
+            <label for="nickname" class="form-label">별명</label>
+            <input type="text" class="form-control" name="nickname" id="nickname"
+                   value="{{ form.nickname.value|default_if_none:'' }}">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">자기 소개</label>
+            <textarea class="form-control mp-2" name="description"
+                      id="description" rows="6">{{ form.description.value|default_if_none:'' }}</textarea>
+        </div>
+        <button type="submit" class="btn" style="color: white; background-color: #0099FF;">저장하기</button>
+    </form>
+</div>
+{% endblock %}

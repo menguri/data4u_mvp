@@ -4,3 +4,9 @@
 (10) 앱 구조, 기능, 이미지 모두 상세하게 설명하기
 
 => 다음주까지
+/goormService/caffe/python
+
+/usr/bin/python3.9
+
+
+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

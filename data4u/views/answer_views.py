@@ -6,13 +6,19 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from ..models import Question_4, Answer
 from ..forms import QuestionForm, AnswerForm
-
+from accounts.models import Profile
 # Create your views here.abs()
 
 
 
 @login_required(login_url='accounts:login')
 def answer_create(request, question_id):
+    try:
+        profile = get_object_or_404(Profile, user=request.user)
+    except:
+        messages.error(request, '프로필을 먼저 등록해주세요.')
+        return redirect('accounts:profile', request.user.id)
+    
     question = get_object_or_404(Question_4, pk=question_id)
     if request.user == question.author:
         messages.error(request, '자신의 질문엔 투표할 수 없습니다.')
@@ -24,12 +30,15 @@ def answer_create(request, question_id):
             return redirect('data4u:detail', question_id=question_id)
         form = AnswerForm(request.POST)
         if form.is_valid():
-        	answer = form.save(commit=False)
-        	answer.author = request.user
-        	answer.create_date = timezone.now()
-        	answer.question = question
-        	answer.save()
-        	return redirect('{}#answer_{}'.format(resolve_url('data4u:detail', question_id=answer.question.id), answer.id))
+            answer = form.save(commit=False)
+            answer.author = request.user
+            answer.create_date = timezone.now()
+            answer.question = question
+            answer.save()
+            # 포인트 얻음
+            profile.point += 100
+            profile.save()
+            return redirect('{}#answer_{}'.format(resolve_url('data4u:detail', question_id=answer.question.id), answer.id))
     else:
         return HttpResponseNotAllowed('Only POST is possible.')
 

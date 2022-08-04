@@ -6,7 +6,7 @@ heroku run python manage.py migrate
 
 (7) Hekuro로 배포하기 -> 08.03
 * [Errno 30] Read-only file system: '/media' 해결하기
-* kakao pay Error 해결하기
+* kakao pay Error 해결하기 => 왠지 프로필을 등록하면 해결될 것 같다.
 
 (8) 데이터베이스, 앱 설계도랑 같이 git 업로드
 (9) 이것저것 기술적 사항들/왜 이렇게 했는지 설명하기
@@ -18,4 +18,4 @@ heroku run python manage.py migrate
 /usr/bin/python3.9
 
 
-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
+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

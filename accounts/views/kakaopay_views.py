@@ -26,9 +26,9 @@ def kakaoPay(request):
     	    'tax_free_amount':0,
     	    # 내 애플리케이션 -> 앱설정 / 플랫폼 - WEB 사이트 도메인에 등록된 정보만 가능합니다
     	    # * 등록 : http://IP:8000 
-    	    'approval_url':'https://practice-poll.run.goorm.io/accounts/paySuccess', 
-            'fail_url':'https://practice-poll.run.goorm.io/accounts/payFail',
-            'cancel_url':'https://practice-poll.run.goorm.io/accounts/payCancel'
+    	    'approval_url':'https://data4u-mvp.herokuapp.com/accounts/paySuccess', 
+            'fail_url':'https://data4u-mvp.herokuapp.com/accounts/payFail',
+            'cancel_url':'https://data4u-mvp.herokuapp.com/accounts/payCancel'
         }
         res = requests.post(_url, data=_data, headers=_headers)
         _result = res.json()

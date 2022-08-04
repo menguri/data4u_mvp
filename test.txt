@@ -6,7 +6,7 @@ heroku run python manage.py migrate
 
 (7) Hekuro로 배포하기 -> 08.03
 * [Errno 30] Read-only file system: '/media' 해결하기
-* static 문제 해결하기
+* static 문제 해결하기 => {% load static from staticfiles %}
 
 (8) 데이터베이스, 앱 설계도랑 같이 git 업로드
 (9) 이것저것 기술적 사항들/왜 이렇게 했는지 설명하기
@@ -18,4 +18,4 @@ heroku run python manage.py migrate
 /usr/bin/python3.9
 
 
-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
+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

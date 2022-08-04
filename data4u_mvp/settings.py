@@ -147,4 +147,4 @@ LOGOUT_REDIRECT_URL = '/'
 
 # MEDIA 경로
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

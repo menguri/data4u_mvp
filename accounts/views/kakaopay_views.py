@@ -35,6 +35,12 @@ def kakaoPay(request):
         request.session['tid'] = _result['tid']
         next_url = _result['next_redirect_pc_url']  
         return redirect(next_url)
+    
+    try:
+        profile = get_object_or_404(Profile, user=request.user)
+    except:
+        messages.error(request, '프로필을 먼저 등록해주세요.')
+        return redirect('accounts:profile', request.user.id)
     return render(request, 'accounts/kakaoPay.html')
 
 
